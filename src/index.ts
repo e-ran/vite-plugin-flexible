@@ -1,4 +1,4 @@
-import { Plugin } from 'vite';
+import { IndexHtmlTransformContext, Plugin } from 'vite';
 import { Options, UserOptions } from './types';
 
 const DEFAULT_OPTIONS = {
@@ -10,6 +10,7 @@ const DEFAULT_OPTIONS = {
   mediaQuery: false,
   minPixelValue: 0,
   exclude: null,
+  transformIndexHtml: null,
 };
 
 function resolvedOptions(userOptions?: UserOptions): Options {
@@ -26,12 +27,19 @@ function flexible(userOptions?: UserOptions): Plugin {
       return {
         css: {
           postcss: {
+            // eslint-disable-next-line @typescript-eslint/no-var-requires
             plugins: [require('postcss-pxtorem')(options)],
           },
         },
       };
     },
-    transformIndexHtml() {
+    transformIndexHtml(_html: string, ctx: IndexHtmlTransformContext) {
+      if (options.transformIndexHtml) {
+        const resList =  options.transformIndexHtml(ctx.originalUrl);
+        if (resList) {
+          return resList;
+        }
+      }
       return [
         {
           tag: 'meta',

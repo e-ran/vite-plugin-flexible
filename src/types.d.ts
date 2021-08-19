@@ -1,3 +1,4 @@
+import type { IndexHtmlTransformResult } from 'vite';
 export type Options = {
   /**
    * Represents the root element font size or returns the root element font size based on the input parameter
@@ -55,6 +56,7 @@ export type Options = {
    * @default null
    */
   exclude: string | Regexp | ((file: string) => boolean) | null;
+  transformIndexHtml?: (htmlPath?: string) => IndexHtmlTransformResult | void | Promise<IndexHtmlTransformResult | void>;
 };
 
 export type UserOptions = Partial<Options>;
