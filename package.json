@@ -10,12 +10,12 @@
   "keywords": [
     "vite"
   ],
-  "homepage": "https://github.com/dominicleo/vite-plugin-flexible#readme",
+  "homepage": "https://github.com/e-ran/vite-plugin-flexible#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dominicleo/vite-plugin-flexible"
+    "url": "https://github.com/e-ran/vite-plugin-flexible"
   },
-  "bugs": "https://github.com/dominicleo/vite-plugin-flexible/issues",
+  "bugs": "https://github.com/e-ran/vite-plugin-flexible/issues",
   "files": [
     "dist"
   ],
