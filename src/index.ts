@@ -35,7 +35,7 @@ function flexible(userOptions?: UserOptions): Plugin {
     },
     transformIndexHtml(_html: string, ctx: IndexHtmlTransformContext) {
       if (options.transformIndexHtml) {
-        const resList =  options.transformIndexHtml(ctx.originalUrl);
+        const resList =  options.transformIndexHtml(ctx.originalUrl || ctx.filename);
         if (resList) {
           return resList;
         }
